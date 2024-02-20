@@ -1,6 +1,6 @@
 import BreakdownCard from "./BreakdownCard";
 import "../css/OrderTab.css"
-const OrderTab = ({ItemListID,OrderList,Total}) => {
+const OrderTab = ({ItemListID,OrderList,Total,decreaseItem,removeID}) => {
     return ( 
         <div className="OrderTab">
             <div className="Info">
@@ -11,7 +11,8 @@ const OrderTab = ({ItemListID,OrderList,Total}) => {
                 {(OrderList && Object.keys(OrderList).length == 0) ? (null):(
                     Object.entries(OrderList).map(([key,val])=>(
                         // console.log(key,":",val['count'])    
-                        <BreakdownCard key={"BC"+key} Count={val['count']} Name={ItemListID[key]['Name']} Price={ItemListID[key]['Price']} Total={Total[key]} />
+                        <BreakdownCard key={"BC"+key} Count={val['count']} Name={ItemListID[key]['Name']} Price={ItemListID[key]['Price']} 
+                            Total={Total[key]} decreaseItem={(type)=>{decreaseItem(key,type)}} removeItemById={()=>{removeID(key)}}/>
                     ))
                 )}
             </div>   

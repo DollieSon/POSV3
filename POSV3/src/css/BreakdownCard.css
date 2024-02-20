@@ -6,12 +6,29 @@
 
 }
 .BCName,.BCCount{
-    width: 30%;
+    width: 25%;
 }
 .BCPrice,.BCTotal{
-    width: 20%;
+    width: 17%;
 }
 .BreakdownCard p{
     margin-top:0.5%;
     margin-bottom: 0.5%;
+}
+.Minibuttons{
+    display: flex;
+    align-items: center;
+    width: 16%;
+}
+.buttoned{
+    display: flex;
+}
+.RemoveOne{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 1%;
+    height: 3vh;
+    width: 3vh;
 }

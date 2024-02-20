@@ -59,10 +59,18 @@ function App() {
     setOrderList({...TempOL});
     //CalculateForPrice();
   }
-
+  const decreaseItembyId = (Id, type) =>{
+    let TempOL = OrderList;
+    TempOL[Id]['count'][type] -=1;
+    if (TempOL[Id]['count'][type] <= 0){
+      delete TempOL[Id]['count'][type]
+      delete OrderList[Id]
+    }
+    setOrderList({...TempOL});
+  }
   const CalculateForPrice = ()=>{
-    let TempTotal = Total;
-    TempTotal['Total'] = 0;
+    let TempTotal = {Total:0};
+    //TempTotal['Total'] = 0;
     Object.entries(OrderList).forEach(([ind,Elem])=>{
       TempTotal[ind] = 0;
       let price = ItemsbyID[ind].Price;
@@ -78,17 +86,25 @@ function App() {
     //console.log(TempTotal);
     setTotal({...TempTotal});
   }
-  useEffect(CalculateForPrice,[OrderList]);
 
-  //Set an AutoCalculatorForPrice
+  const removeItembyId = (Id)=>{
+    let TempOL = OrderList;
+    delete TempOL[Id]['count']
+    delete OrderList[Id]
+    setOrderList({...TempOL});
+  }
+  
+
+  
+  useEffect(CalculateForPrice,[OrderList]);
 
   return (
     <>
     <div className="AppMain">
       <NavBar/>
       <div className="MainPage">
-        <ItemMenu ItemsbyCat={ItemsbyCat} FetchError={Error} addItem = {addItemById}/>
-        <OrderTab ItemListID={ItemsbyID} OrderList={OrderList} Total = {Total}/>
+        <ItemMenu ItemsbyCat={ItemsbyCat} FetchError={Error} addItem = {addItemById} />
+        <OrderTab ItemListID={ItemsbyID} OrderList={OrderList} Total = {Total} decreaseItem ={decreaseItembyId} removeID={removeItembyId}/>
         <div>  {/* OrderHistory */}</div>
       </div>  
     </div>
