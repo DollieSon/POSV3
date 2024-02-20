@@ -1,0 +1,17 @@
+.BreakdownCard{
+    display: flex;
+    background-color: rgba(253, 253, 255, 0.226);
+    margin-top:0.5%;
+    margin-bottom: 0.5%;
+
+}
+.BCName,.BCCount{
+    width: 30%;
+}
+.BCPrice,.BCTotal{
+    width: 20%;
+}
+.BreakdownCard p{
+    margin-top:0.5%;
+    margin-bottom: 0.5%;
+}
