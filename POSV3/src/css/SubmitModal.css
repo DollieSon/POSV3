@@ -1,0 +1,25 @@
+.SubmitModal {
+  position: fixed !important; /* Stay in place */
+  z-index: 2 !important; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if content overflows */
+  background-color: rgba(0,0,0,0.4); /* Transparent black background */
+}
+.OrderList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.OrderItem{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

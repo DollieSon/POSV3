@@ -2,8 +2,10 @@ import ItemMenu from './components/ItemMenu'
 import './App.css'
 import NavBar from './components/NavBar'
 import OrderTab from './components/OrderTab'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import supabase from './Supabase'
+
+export const BasicNeedsContext = createContext();
 
 //
 function App() {
@@ -43,6 +45,8 @@ function App() {
       }
       FetchAllItems();
   },[]);
+  
+  
   const addItemById = (Id, type) =>{
     type == null ? (type = "Normal") : (null)
     console.log("Added " ,ItemsbyID[Id].Name ," " , type);
@@ -94,7 +98,9 @@ function App() {
     setOrderList({...TempOL});
   }
   
-
+  const SendOrder = ()=>{
+    
+  }
   
   useEffect(CalculateForPrice,[OrderList]);
 
@@ -103,9 +109,11 @@ function App() {
     <div className="AppMain">
       <NavBar/>
       <div className="MainPage">
+        <BasicNeedsContext.Provider value={{OrderList,Total,ItemsbyID}}>
         <ItemMenu ItemsbyCat={ItemsbyCat} FetchError={Error} addItem = {addItemById} />
         <OrderTab ItemListID={ItemsbyID} OrderList={OrderList} Total = {Total} decreaseItem ={decreaseItembyId} removeID={removeItembyId}/>
         <div>  {/* OrderHistory */}</div>
+        </BasicNeedsContext.Provider>
       </div>  
     </div>
     </>

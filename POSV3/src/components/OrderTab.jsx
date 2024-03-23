@@ -1,8 +1,12 @@
 import BreakdownCard from "./BreakdownCard";
 import "../css/OrderTab.css"
+import SubmitModal from "./SubmitModal";
+import { useState } from "react";
 const OrderTab = ({ItemListID,OrderList,Total,decreaseItem,removeID}) => {
+    const [isModal, setIsModal] = useState(false)
     return ( 
         <div className="OrderTab">
+            {/*{isModal ? <SubmitModal/> : null} */}
             <div className="Info">
                 <p className="ContumerID">ID :</p>
                 <p className="Total">Total: {Total.Total}</p>
@@ -16,6 +20,10 @@ const OrderTab = ({ItemListID,OrderList,Total,decreaseItem,removeID}) => {
                     ))
                 )}
             </div>   
+            <div className="helperbutton">
+                <button className="SendOrder" onClick={()=>{setIsModal(true)}}>Send Order</button>
+                <button className="clearOrder">Clear Order</button>
+            </div>
         </div>
      );
 }

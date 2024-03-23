@@ -1,0 +1,14 @@
+OrderList Structure
+
+{
+    (Item Id): (Types){
+        (Type)
+    }
+}
+
+Total Structure
+
+{
+    (Item Id): Total
+    Total : (Total)
+}
